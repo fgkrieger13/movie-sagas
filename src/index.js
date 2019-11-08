@@ -30,6 +30,8 @@ function* getMovieSaga() {
     }
 }
 
+
+
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
@@ -38,6 +40,13 @@ const movies = (state = [], action) => {
         default:
             return state;
     }
+}
+
+const specificMovie = (state = [], action) => {
+    if (action.type === 'SPECIFIC_MOVIE'){
+        return action.payload;
+    }
+    return state;  
 }
 
 // Used to store the movie genres
@@ -55,6 +64,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        specificMovie,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

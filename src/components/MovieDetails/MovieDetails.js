@@ -18,8 +18,11 @@ class MovieDetails extends Component {
         <>
             <button onClick={()=> this.props.history.push('/')}>Back to list</button>
             <button>Edit</button>
-            <p>your movie</p>
-            
+                <div>
+                    <h2 className = 'title'>{this.props.reduxState.specificMovie.title}</h2>
+                    <p className = 'description'>{this.props.reduxState.specificMovie.description}</p>
+                    <li>{this.props.reduxState.specificMovie.name}</li>
+                </div> 
         </>
     );
   }

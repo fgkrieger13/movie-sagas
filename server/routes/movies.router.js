@@ -8,7 +8,9 @@ const router = express.Router();
 router.get('/', (req, res) => {
 
     // SQL Query to return all favorites
-    const query = 'SELECT * FROM movies;';
+    const query = `SELECT * FROM "junction"
+    JOIN "movies" ON "junction"."movie_id" = "movies"."id"
+    JOIN "genres" ON "junction"."genre_id" = "genres"."id";`
   
     pool.query(query)
       .then((response) => {
