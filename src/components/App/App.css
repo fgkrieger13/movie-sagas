@@ -17,6 +17,22 @@
 .App-intro {
   font-size: large;
 }
+img {
+  float: left;
+  margin-right: 10px;
+}
+
+.description {
+  text-align: left;
+}
+.title {
+  text-align: left;
+}
+
+.single {
+  display: inline-block;
+  margin-bottom: 5px;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

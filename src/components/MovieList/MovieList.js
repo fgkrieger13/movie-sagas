@@ -17,14 +17,13 @@ class App extends Component {
     return (
         <>
             {this.props.reduxState.movies.map((movie) => (
-                <>
-                    <h2>{movie.title}</h2>
+                <div key={movie.id} className= "single">
                     <img src={movie.poster} alt={movie.title}></img>
-                    <p>{movie.description}</p>
-                </>
+                    <h2 className = 'title'>{movie.title}</h2>
+                    <p className = 'description'>{movie.description}</p>
+                </div>
             ))}
         </>
-     
     );
   }
 }
