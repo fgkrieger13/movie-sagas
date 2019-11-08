@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import './index.css';
 import App from './components/App/App.js';
 import registerServiceWorker from './registerServiceWorker';
@@ -9,14 +10,25 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+import { takeEvery, put } from 'redux-saga/effects';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-
+    yield takeEvery('GET_MOVIES', getMovieSaga);
 }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
+
+
+function* getMovieSaga() {
+    try {
+        const movieResponse = yield axios.get('/movies');
+        yield put({ type: 'SET_MOVIES', payload: movieResponse.data });
+    } catch (error) {
+        console.log('error fetching favorites', error);
+    }
+}
 
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
