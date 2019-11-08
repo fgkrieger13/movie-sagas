@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
+import { HashRouter as Router, Route} from 'react-router-dom'
 import MovieList from '../MovieList/MovieList';
+import MovieDetails from '../MovieDetails/MovieDetails';
 
 
 class App extends Component {
@@ -14,9 +16,12 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
-        <MovieList/>
+      <Route path="/" exact component={MovieList} />
+      <Route path="/MovieDetails" component={MovieDetails} />
       </div>
+      </Router>
     );
   }
 }
