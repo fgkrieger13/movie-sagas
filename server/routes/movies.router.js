@@ -23,6 +23,30 @@ router.get('/', (req, res) => {
       })
   });
 
+  router.put('/', (req, res) => {
+    const updatedMovie = req.body
+    console.log(updatedMovie)
+
+    const queryText = `UPDATE "movies" SET "title" = $1, "description" = $2
+    WHERE 
+    "id" = $3`;
+  
+    const queryValues = [
+        updatedMovie.newTitle,
+        updatedMovie.newDescription,
+        updatedMovie.id
+    ]
+    pool.query(queryText, queryValues)
+      .then((response) => {
+        console.log('movies category PUT response', response);
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        console.log('favorites category PUT error', error);
+        res.sendStatus(500);
+      })
+  });
+
 
 
   module.exports = router;

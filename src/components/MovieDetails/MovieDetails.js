@@ -17,7 +17,7 @@ class MovieDetails extends Component {
     return (
         <>
             <button onClick={()=> this.props.history.push('/')}>Back to list</button>
-            <button>Edit</button>
+            <button onClick= {()=> this.props.history.push('/EditPage')}>Edit</button>
                 <div>
                     <h2 className = 'title'>{this.props.reduxState.specificMovie.title}</h2>
                     <p className = 'description'>{this.props.reduxState.specificMovie.description}</p>
